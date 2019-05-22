@@ -3,26 +3,18 @@ import React, { Component } from 'react';
 class App extends Component {
     constructor() {
         super();
+        this.forceUpdateHandler = this.forceUpdateHandler.bind(this);
+    }
 
-        this.state = {
-            data: []
-        }
-
-        this.setStateHandler = this.setStateHandler.bind(this);
-    };
-
-    setStateHandler() {
-        const item = "setState...";
-        const myArray = this.state.data.slice();
-        myArray.push(item);
-        this.setState({data: myArray});
+    forceUpdateHandler() {
+        this.forceUpdate();
     };
 
     render() {
         return (
             <div>
-                <button onClick={this.setStateHandler}>Set State</button>
-                <h4>State Array: {this.state.data}</h4>
+                <button onClick={this.forceUpdateHandler}>Focre Update!</button>
+                <h4>Random Number: {Math.random()}</h4>
             </div>
         )
     }
