@@ -5,16 +5,36 @@ class App extends Component {
         super(props);
 
         this.state = {
-            header: "Header from state...",
-            content: "Content from state..."
+            header: "Header from props...",
+            content: "Content from props..."
         };
     }
 
     render() {
         return (
             <div>
-                <h1>{this.state.header}</h1>
-                <p>{this.state.content}</p>
+                <Header headerProps={this.state.header} />
+                <Content contentProps={this.state.content} />
+            </div>
+        )
+    }
+}
+
+class Header extends Component {
+    render() {
+        return (
+            <div>
+                <h1>{this.props.headerProps}</h1>
+            </div>
+        )
+    }
+}
+
+class Content extends Component {
+    render() {
+        return (
+            <div>
+                <p>{this.props.contentProps}</p>
             </div>
         )
     }
