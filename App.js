@@ -1,43 +1,43 @@
 import React, { Component } from 'react';
 
 class App extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            header: "Header from props...",
-            content: "Content from props..."
-        };
-    }
-
     render() {
         return (
             <div>
-                <Header headerProps={this.state.header} />
-                <Content contentProps={this.state.content} />
+                <h3>Array: {this.props.propArray}</h3>
+                <h3>Bool: {this.props.propBool ? 'True!' : 'False.'}</h3>
+                <h3>Func: {this.props.propFunc(3)}</h3>
+                <h3>Number: {this.props.propNumber}</h3>
+                <h3>String: {this.props.propString}</h3>
+                <h3>Object: {this.props.propObject.objectName1}</h3>
+                <h3>Object: {this.props.propObject.objectName2}</h3>
+                <h3>Object: {this.props.propObject.objectName3}</h3>
             </div>
         )
     }
 }
 
-class Header extends Component {
-    render() {
-        return (
-            <div>
-                <h1>{this.props.headerProps}</h1>
-            </div>
-        )
-    }
-}
+App.propTypes = {
+    propArray: React.PropTypes.array.isRequired,
+    propBool: React.PropTypes.bool.isRequired,
+    propFunc: React.PropTypes.func,
+    propNumber: React.PropTypes.number,
+    propString: React.PropTypes.string,
+    propObject: React.PropTypes.object
+};
 
-class Content extends Component {
-    render() {
-        return (
-            <div>
-                <p>{this.props.contentProps}</p>
-            </div>
-        )
+App.defaultProps = {
+    propArray: [1, 2, 3, 4, 5],
+    propBool: true,
+    propFunc: function(e) { return e },
+    propNumber: 1,
+    propString: "This is a string.",
+
+    propObject: {
+        objectName1: "objectValue1",
+        objectName2: "objectValue2",
+        objectName3: "objectValue3"
     }
-}
+};
 
 export default App;
