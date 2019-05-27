@@ -5,7 +5,7 @@ export default class App extends Component {
         super(props);
 
         this.state = {
-            data: 'Initial data...'
+            data: 'Initial state...'
         };
 
         this.updateState = this.updateState.bind(this);
@@ -18,8 +18,18 @@ export default class App extends Component {
     render() {
         return (
             <div>
-                <input type="text" value={this.state.data} onChange={this.updateState} />
-                <h4>{this.state.data}</h4>
+                <Content myDataProps={this.state.data} updateStateProp={this.updateState}></Content>
+            </div>
+        )
+    }
+}
+
+class Content extends Component {
+    render() {
+        return (
+            <div>
+                <input type="text" value={this.props.myDataProps} onChange={this.props.updateStateProp} />
+                <h3>{this.props.myDataProps}</h3>
             </div>
         )
     }
