@@ -1,35 +1,26 @@
 import React, { Component } from 'react';
 
-class App extends Component {
+export default class App extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            data: 'Initial data...'
+        };
+
+        this.updateState = this.updateState.bind(this);
+    }
+
+    updateState(e) {
+        this.setState({data: e.target.value});
+    }
+
     render() {
         return (
             <div>
-                <Header />
-                <Content />
+                <input type="text" value={this.state.data} onChange={this.updateState} />
+                <h4>{this.state.data}</h4>
             </div>
         )
     }
 }
-
-class Header extends Component {
-    render() {
-        return (
-            <div>
-                <h1>Header</h1>
-            </div>
-        )
-    }
-}
-
-class Content extends Component {
-    render() {
-        return (
-            <div>
-                <h2>Content</h2>
-                <p>This is the content.</p>
-            </div>
-        )
-    }
-}
-
-export default App;
