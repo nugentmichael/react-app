@@ -1,5 +1,28 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App.js';
+import React, { Component } from 'react';
 
-ReactDOM.render(<App />, document.getElementById('app'));
+const newData = {
+   data: 'Data from HOC...',
+}
+
+const MyHOC = ComposedComponent => class extends Component {
+   componentDidMount() {
+      this.setState({
+         data: newData.data
+      });
+   }
+   render() {
+      return <ComposedComponent {...this.props} {...this.state} />;
+   }
+};
+
+class MyComponent extends Component {
+   render() {
+      return (
+         <div>
+            <h1>{this.props.data}</h1>
+         </div>
+      )
+   }
+}
+
+export default MyHOC(MyComponent);
