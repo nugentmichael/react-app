@@ -12,14 +12,24 @@ export default class App extends Component {
     }
 
     updateState() {
-        this.setState({data: 'Data updated...'});
+        this.setState({data: 'Data updated from a child class component...'});
     }
 
     render() {
         return (
             <div>
-                <button onClick={this.updateState}>Click</button>
-                <h4>{this.state.data}</h4>
+                <Content myDataProp={this.state.data} updateStateProp={this.updateState}></Content>
+            </div>
+        )
+    }
+}
+
+class Content extends Component {
+    render() {
+        return (
+            <div>
+                <button onClick={this.props.updateStateProp}>Click</button>
+                <h3>{this.props.myDataProp}</h3>
             </div>
         )
     }
