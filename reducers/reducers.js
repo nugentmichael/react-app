@@ -24,3 +24,9 @@ function todos(state = [], action) {
             return state
     }
 }
+
+const todoApp = combineReducers({
+    todos
+});
+
+export default todoApp;
